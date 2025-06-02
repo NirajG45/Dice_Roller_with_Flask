@@ -1,31 +1,14 @@
-const rollBtn = document.getElementById('roll-btn');
-const diceImg = document.getElementById('dice-img');
-const sound = document.getElementById('roll-sound');
-const historyList = document.getElementById('roll-history');
-const toggleMode = document.getElementById('toggle-mode');
-const body = document.body;
+function rollDice() {
+    const dice = document.getElementById('dice');
+    dice.classList.add('rolling');
 
-rollBtn.addEventListener('click', () => {
-  fetch('/roll')
+    fetch('/roll')
     .then(response => response.json())
     .then(data => {
-      diceImg.src = `/static/dice/${data.value}.png`;
-      diceImg.classList.add('shake');
-      sound.play();
-
-      setTimeout(() => {
-        diceImg.classList.remove('shake');
-      }, 500);
-
-      historyList.innerHTML = '';
-      data.history.forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = `🎲 ${item.value} at ${item.time}`;
-        historyList.appendChild(li);
-      });
+        setTimeout(() => {
+            const faces = ['⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];
+            dice.textContent = faces[data.number - 1];
+            dice.classList.remove('rolling');
+        }, 300);
     });
-});
-
-toggleMode.addEventListener('click', () => {
-  body.classList.toggle('dark-mode');
-});
+}
