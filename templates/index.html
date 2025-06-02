@@ -1,88 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Dice Roller 🎲</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Rubik', sans-serif;
-            background: linear-gradient(135deg, #f8ffae 0%, #43c6ac 100%);
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-
-        h1 {
-            font-size: 40px;
-            color: #2e2e2e;
-            margin-bottom: 40px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-        }
-
-        #dice {
-            font-size: 120px;
-            margin-bottom: 30px;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        #dice.rolling {
-            animation: roll 0.4s ease-in-out;
-        }
-
-        @keyframes roll {
-            0% { transform: rotate(0deg); }
-            25% { transform: rotate(90deg); }
-            50% { transform: rotate(180deg); }
-            75% { transform: rotate(270deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        button {
-            padding: 15px 35px;
-            font-size: 20px;
-            border: none;
-            border-radius: 12px;
-            background-color: #1e90ff;
-            color: white;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        button:hover {
-            background-color: #125fa3;
-        }
-
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 28px;
-            }
-
-            #dice {
-                font-size: 90px;
-            }
-
-            button {
-                font-size: 16px;
-                padding: 12px 25px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>🎲 Dice Roller</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
 </head>
 <body>
-    <h1>Flask Dice Roller 🎲</h1>
-    <div id="dice">⚀</div>
-    <button onclick="rollDice()">Roll Dice</button>
+  <div class="container">
+    <h1>🎲 Flask Dice Roller</h1>
+    <img id="dice-img" src="{{ url_for('static', filename='dice/1.png') }}" alt="dice">
+    <button id="roll-btn">Roll the Dice</button>
 
-    <script src="/static/script.js"></script>
+    <div id="history">
+      <h2>🕒 Last 5 Rolls</h2>
+      <ul id="roll-history"></ul>
+    </div>
+
+    <button id="toggle-mode">🌙 Toggle Mode</button>
+  </div>
+
+  <audio id="roll-sound" src="{{ url_for('static', filename='sound.mp3') }}"></audio>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
