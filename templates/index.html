@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dice Roller 🎲</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik">
+    <style>
+        body {
+            font-family: 'Rubik', sans-serif;
+            background: #f0f8ff;
+            text-align: center;
+            padding-top: 100px;
+        }
+        #dice {
+            font-size: 120px;
+            margin: 30px;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 20px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Flask Dice Roller 🎲</h1>
+    <div id="dice">⚀</div>
+    <button onclick="rollDice()">Roll Dice</button>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
